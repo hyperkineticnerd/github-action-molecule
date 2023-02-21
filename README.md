@@ -1,6 +1,6 @@
 # Molecule action
 
-Heavily Based on [Robert De Bock's Action](https://github.com/robertdebock/molecule-action).
+Heavily Based on [Robert de Bock's Action](https://github.com/robertdebock/molecule-action).
 
 A GitHub action to test your [Ansible](https://www.ansible.com/) role using [Molecule](https://molecule.readthedocs.io/en/stable/).
 
