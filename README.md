@@ -36,11 +36,11 @@ When `tox.ini` is found, [tox](https://tox.readthedocs.io/en/latest/) is used to
 
 ### `namespace`
 
-The Docker Hub namespace where the image is in. Default `"robertdebock"`.
+The Docker Hub namespace where the image is in. Default `"hyperkineticnerd"`.
 
 ### `image`
 
-The image you want to run on. Default `"fedora"`.
+The image you want to run on. Default `"ubi"`.
 
 ### `tag`
 
@@ -60,7 +60,7 @@ The molecule scenario to run. Default `"default"`
 
 ## Example usage
 
-Here is a default configuration that tests your role on `namespace: robertdebock`, `image: fedora`, `tag: latest`.
+Here is a default configuration that tests your role on `namespace: hyperkineticnerd`, `image: ubi`, `tag: latest`.
 
 ```yaml
 ---
@@ -76,7 +76,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: robertdebock/molecule-action@5.0.2
+        uses: hyperkineticnerd/molecule-action@master
 ```
 
 NOTE: the `checkout` action needs to place the file in `${{ github.repository }}` in order for Molecule to find your role.
@@ -99,7 +99,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: robertdebock/molecule-action@5.0.2
+        uses: hyperkineticnerd/molecule-action@master
         with:
           command: lint
   test:
@@ -122,7 +122,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: robertdebock/molecule-action@5.0.2
+        uses: hyperkineticnerd/molecule-action@master
         with:
           image: "${{ matrix.image }}"
           options: parallel
@@ -136,7 +136,7 @@ You can enable Molecule debugging by using this pattern:
 ```yaml
 # Stuff omitted.
       - name: molecule
-        uses: robertdebock/molecule-action@5.0.2
+        uses: hyperkineticnerd/molecule-action@master
         with:
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}
