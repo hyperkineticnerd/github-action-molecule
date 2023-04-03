@@ -4,6 +4,10 @@ description: Run Molecule to test Ansible roles
 author: Sean Nelson <hyperkineticnerd@gmail.com>
 
 inputs:
+  registry:
+    description: The Registry where the image can be found. Defaults to ``.
+    required: false
+    default: ghcr.io
   namespace:
     description: The [Docker Hub](https://hub.docker.com/) namespace where the image can be found. Defaults to `hyperkineticnerd`.
     required: false
@@ -11,7 +15,7 @@ inputs:
   image:
     description: The image you want to run on. Defaults to `ubi`.
     required: false
-    default: ubi
+    default: github-action-molecule
   tag:
     description: The tag of the container image to use. Defaults to `latest`.
     required: false
@@ -30,7 +34,7 @@ inputs:
 
 runs:
   using: docker
-  image: 'docker://ghcr.io/hyperkineticnerd/github-action-molecule'
+  image: 'docker://${{ inputs.registry }}/${{ inputs.namespace }}/${{ inputs.image }}:${{ inputs.tag }}'
   env:
     ANSIBLE_ROLES_PATH: "../"
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
@@ -40,6 +44,9 @@ runs:
     options: ${{ inputs.options }}
     command: ${{ inputs.command }}
     scenario: ${{ inputs.scenario }}
+#   entrypoint:
+#   args:
+#     - 
 
 branding:
   icon: play
