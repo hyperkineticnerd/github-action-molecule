@@ -42,7 +42,7 @@ runs:
   env:
     ANSIBLE_ROLES_PATH: "../"
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
-  entrypoint: ${{ inputs.command }}
+  entrypoint: molecule
   args:
   - ${{ inputs.subcommand }}
 
