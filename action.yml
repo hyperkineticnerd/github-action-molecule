@@ -38,7 +38,7 @@ runs:
   env:
     ANSIBLE_ROLES_PATH: "../"
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
-  entrypoint: sh -c
+  entrypoint: /bin/bash -c
   args:
   - ${{ inputs.command }}
 
