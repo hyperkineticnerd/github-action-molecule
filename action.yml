@@ -4,30 +4,10 @@ description: Run Molecule to test Ansible roles
 author: Sean Nelson <hyperkineticnerd@gmail.com>
 
 inputs:
-#   registry:
-#     description: The Registry where the image can be found. Defaults to ``.
-#     required: false
-#     default: ghcr.io
-#   namespace:
-#     description: The [Docker Hub](https://hub.docker.com/) namespace where the image can be found. Defaults to `hyperkineticnerd`.
-#     required: false
-#     default: hyperkineticnerd
-#   image:
-#     description: The image you want to run on. Defaults to `ubi`.
-#     required: false
-#     default: github-action-molecule
-#   tag:
-#     description: The tag of the container image to use. Defaults to `latest`.
-#     required: false
-#     default: latest
   options:
     description: Options you can pass to [`tox`](https://tox.readthedocs.io/en/latest/), for example `--parallel all`.
     required: false
   command:
-    description:  Defaults to `molecule`.
-    required: false
-    default: molecule
-  subcommand:
     description: What command to pass to [molecule](https://molecule.readthedocs.io/en/latest/), for example `lint` or `syntax`. Defaults to `lint`.
     required: false
     default: lint
@@ -42,9 +22,11 @@ runs:
   env:
     ANSIBLE_ROLES_PATH: "../"
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
+    scenario: ${{ inputs.scenario }}
+    options: ${{ inputs.options }}
   entrypoint: molecule
   args:
-  - ${{ inputs.subcommand }}
+  - ${{ inputs.command }}
 
 branding:
   icon: play
