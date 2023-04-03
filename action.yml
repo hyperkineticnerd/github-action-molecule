@@ -38,9 +38,8 @@ runs:
   env:
     ANSIBLE_ROLES_PATH: "../"
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
-  entrypoint: ${{ inputs.command }}
-#   args:
-#     - 
+  entrypoint: sh -c
+  args: ${{ inputs.command }}
 
 branding:
   icon: play
