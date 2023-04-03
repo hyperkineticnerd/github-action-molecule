@@ -40,7 +40,7 @@ runs:
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
   entrypoint: /bin/bash -c
   args:
-  - ${{ inputs.command }}
+  - ${{ inputs.command | list }}
 
 branding:
   icon: play
