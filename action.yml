@@ -26,7 +26,7 @@ runs:
     options: ${{ inputs.options }}
   entrypoint: molecule
   args:
-  - ${{ inputs.command }}
+    - ${{ inputs.command }}
 
 branding:
   icon: play
