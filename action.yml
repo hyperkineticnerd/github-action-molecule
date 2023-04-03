@@ -24,9 +24,13 @@ inputs:
     description: Options you can pass to [`tox`](https://tox.readthedocs.io/en/latest/), for example `--parallel all`.
     required: false
   command:
-    description: What command to pass to [molecule](https://molecule.readthedocs.io/en/latest/), for example `lint` or `syntax`. Defaults to `test`.
+    description:  Defaults to `molecule`.
     required: false
-    default: test
+    default: molecule
+  subcommand:
+    description: What command to pass to [molecule](https://molecule.readthedocs.io/en/latest/), for example `lint` or `syntax`. Defaults to `lint`.
+    required: false
+    default: lint
   scenario:
     description: The molecule scenario to run. Default to `default`.
     required: false
@@ -38,9 +42,9 @@ runs:
   env:
     ANSIBLE_ROLES_PATH: "../"
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
-  entrypoint: /bin/bash -c
+  entrypoint: ${{ inputs.command }}
   args:
-  - ${{ inputs.command | list }}
+  - ${{ inputs.subcommand }}
 
 branding:
   icon: play
