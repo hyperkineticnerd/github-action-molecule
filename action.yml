@@ -18,7 +18,7 @@ inputs:
 
 runs:
   using: docker
-  image: docker://quay.io/ansible/creator-ee:latest
+  image: docker://ghcr.io/ansible/community-ansible-dev-tools:latest
   env:
     ANSIBLE_ROLES_PATH: "../"
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
